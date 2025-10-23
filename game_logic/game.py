@@ -22,18 +22,17 @@ def init_game() -> dict :
     
     return {"deck":deck,"player_1":name1,"player_2":name2}
 
-print(init_game())
 def play_round(player_1: dict, player_2: dict)-> None:
-    x=compare_cards(player_1,player_2)
-    y=player_1[2]
-    if x=="p1":
-        player_1["won_pile"].append(player_2["hand"][0])
-        player_1["won_pile"].append(player_2["hand"][0])
-        player_2["hand"].pop(0)
+    x=player_1["hand"].pop()
+    y=player_1["hand"].pop()
+    z=compare_cards(x,y)
+    if z=="p1":
+        player_1["won_pile"].append(x)
+        player_1["won_pile"].append(y)
 
-    if x=="p2":
-        player_1["won_pile"].append(player_1["hand"][0])
-        player_1["won_pile"].append(player_1["hand"][0])
+    if z=="p2":
+        player_1["won_pile"].append(x)
+        player_1["won_pile"].append(y)
 
 
 
